@@ -4,6 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface Fuel {
+
     String powerUp();
+
+    String getName();
 }
 
