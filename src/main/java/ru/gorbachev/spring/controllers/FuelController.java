@@ -15,8 +15,12 @@ import java.util.HashMap;
 @Controller
 @RequestMapping("/mvc/fuel")
 public class FuelController {
+    private final FuelMap fuelMap;
+
     @Autowired
-    private FuelMap fuelMap;
+    public FuelController(FuelMap fuelMap) {
+        this.fuelMap = fuelMap;
+    }
 
     @FuelExceptionHandler
     @GetMapping("/check")

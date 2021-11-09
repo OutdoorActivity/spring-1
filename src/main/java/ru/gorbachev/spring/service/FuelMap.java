@@ -8,21 +8,16 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.xml.ws.soap.Addressing;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class FuelMap {
-    HashMap<String, Fuel> fuelHashMap;
+    @Autowired
+    private List<Fuel> fuelList;
 
-    {
-        fuelHashMap = new HashMap<>();
-        fuelHashMap.put("petrol", new PetrolFuel());
-        fuelHashMap.put("diesel", new DieselFuel());
-    }
-
-    public HashMap<String, Fuel> getMap() {
-        return fuelHashMap;
+    public Map<String, Fuel> getMap() {
+        return fuelList.stream().collect(Collectors.toMap(Fuel::getName, value -> value));
     }
 }
 
